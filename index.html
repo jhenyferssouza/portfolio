@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jhenyfer Souza · Backend & Machine Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaff;--card:#fff;--ink:#14122b;--mut:#615f7d;--line:#e2dff5;--acc:#6d28d9;--acc2:#0d9488;--dot:#d9d4f3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a14;--card:#12121f;--ink:#f1f0ff;--mut:#9a98b8;--line:#25243a;--acc:#a78bfa;--acc2:#5eead4;--dot:#1c1b30;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0a14;--card:#12121f;--ink:#f1f0ff;--mut:#9a98b8;--line:#25243a;--acc:#a78bfa;--acc2:#5eead4;--dot:#1c1b30;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg) radial-gradient(var(--dot) 1px,transparent 1px) 0 0/24px 24px;color:var(--ink);font:16px/1.65 'Space Grotesk',system-ui,sans-serif}
+.w{max-width:1000px;margin:0 auto;padding:0 22px}
+.m{font-family:'JetBrains Mono',ui-monospace,monospace}
+nav{display:flex;justify-content:space-between;padding:22px 0;font-size:13px;color:var(--mut)}
+nav a{color:inherit;text-decoration:none;margin-left:18px}nav a:hover{color:var(--acc)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;padding:48px 0 60px}
+.tag{font-size:12px;color:var(--acc2);display:inline-flex;gap:8px;align-items:center}
+.tag:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--acc2)}
+h1{font-size:clamp(46px,9vw,92px);line-height:.95;letter-spacing:-.04em;margin:18px 0;font-weight:700}
+h1 span{color:var(--acc)}
+.lead{font-size:19px;color:var(--mut);max-width:520px}.lead b{color:var(--ink);font-weight:500}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.btn{font-size:14px;padding:11px 18px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;font-weight:500}
+.btn.p{background:var(--acc);border-color:var(--acc);color:var(--bg)}.btn:hover{border-color:var(--acc)}
+.ph{position:relative;aspect-ratio:4/5;max-width:360px;justify-self:center;width:100%}
+.ph .img{position:absolute;inset:14px;border-radius:6px;background:linear-gradient(160deg,var(--acc),var(--acc2));display:grid;place-items:center;overflow:hidden}
+.ph .img img{width:100%;height:100%;object-fit:cover;display:none}
+.ph .img span{font-size:96px;font-weight:700;color:var(--bg);letter-spacing:-.05em}
+.ph i{position:absolute;width:30px;height:30px;border:3px solid var(--acc2)}
+.ph i:nth-of-type(1){top:0;left:0;border-right:0;border-bottom:0}.ph i:nth-of-type(2){top:0;right:0;border-left:0;border-bottom:0}
+.ph i:nth-of-type(3){bottom:0;left:0;border-right:0;border-top:0}.ph i:nth-of-type(4){bottom:0;right:0;border-left:0;border-top:0}
+.ph em{position:absolute;top:-12px;left:30px;background:var(--acc2);color:var(--bg);font-style:normal;font-size:11px;padding:2px 8px;border-radius:3px;font-weight:500}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:38px;letter-spacing:-.03em;margin:0 0 28px;line-height:1.1}
+h2 span{display:block;font-size:12px;color:var(--acc);letter-spacing:.05em;margin-bottom:10px;font-weight:400}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;transition:.2s}
+.card:hover{border-color:var(--acc2);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc2) 18%,transparent)}
+.card h3{font-size:26px;margin:0;letter-spacing:-.02em}.card p{margin:0;color:var(--mut);font-size:15px;flex:1}
+.meta{display:flex;justify-content:space-between;font-size:12px;color:var(--acc2)}.meta u{text-decoration:none;color:var(--mut)}
+.job{display:grid;grid-template-columns:170px 1fr;gap:24px;font-size:15px}
+.job .d{font-size:13px;color:var(--mut)}.job h3{margin:0;font-size:24px}
+.job ul{margin:14px 0 0;padding-left:18px;color:var(--mut)}.job li{margin-bottom:6px}
+.aw{display:flex;gap:20px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.aw b{font-size:40px;color:var(--acc);min-width:60px;letter-spacing:-.04em}.aw span{color:var(--mut)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips span{font-size:13px;border:1px solid var(--line);background:var(--card);padding:6px 12px;border-radius:6px}
+.edu p{margin:0 0 14px}.edu small{display:block;color:var(--mut)}
+footer{padding:56px 0 40px;border-top:1px solid var(--line);text-align:center}
+footer h2{font-size:clamp(30px,6vw,54px)}footer h2 span{display:inline;color:var(--acc);font-size:inherit;letter-spacing:inherit}
+footer p{color:var(--mut);font-size:13px;margin-top:30px}
+@media(max-width:700px){.hero{grid-template-columns:1fr;gap:36px}.ph{order:-1;max-width:260px}.job,.two{grid-template-columns:1fr;gap:10px}nav a:not(:last-child){display:none}}
+</style>
+</head>
+<body>
+<div class="w">
+<nav class="m"><span>jhenyfer_souza/</span><span><a href="#projetos">projetos</a><a href="#trajetoria">trajetória</a><a href="#contato">contato</a></span></nav>
+
+<header class="hero">
+  <div>
+    <div class="tag m">Apaixonada por inovação</div>
+    <h1>Jhenyfer <span>Souza</span></h1>
+    <p class="lead">Estudante de <b> Engenharia de Software </b> que transforma problemas em soluções <b>reais</b>.</p>
+    <div class="btns">
+      <a class="btn p" href="#projetos">Ver projetos</a>
+      <a class="btn" href="https://github.com/jhenyferssouza" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/jhenyfer-souza" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <div class="ph">
+    <em class="m">dev_ml · 0.99</em><i></i><i></i><i></i><i></i>
+    <div class="img"><img id="foto" src="foto.jpeg" alt="Foto de Jhenyfer Souza" onload="this.style.display='block';this.nextElementSibling.style.display='none'"><span>JS</span></div>
+  </div>
+</header>
+
+<section id="projetos">
+  <h2><span class="m">// 01 · GitHub</span>Projetos</h2>
+  <div class="grid">
+    <a class="card" href="https://github.com/jhenyferssouza/Plaquet.AI" target="_blank" rel="noopener"><div class="meta m"><span>Python</span><u>visão computacional ↗</u></div><h3>Plaquet.AI</h3><p>Automatiza a contagem de plaquetas sanguíneas em lâminas microscópicas.</p></a>
+    <a class="card" href="https://github.com/jhenyferssouza/Check.AI" target="_blank" rel="noopener"><div class="meta m"><span>Python</span><u>IA · notícias ↗</u></div><h3>Check.AI</h3><p>Apoia a checagem de notícias e incentiva o usuário a verificar e refletir antes de compartilhar.</p></a>
+    <a class="card" href="https://github.com/jhenyferssouza/Orthus.IA" target="_blank" rel="noopener"><div class="meta m"><span>Python</span><u>agentes · tutor ↗</u></div><h3>Orthus.IA</h3><p>Tutor inteligente e assistente técnico para guiar estudos de engenharia de IA, de visão computacional a agentes inteligentes.</p></a>
+    <a class="card" href="https://github.com/jhenyferssouza/Busca-Farma" target="_blank" rel="noopener"><div class="meta m"><span>HTML</span><u>saúde pública ↗</u></div><h3>Busca-Farma</h3><p>Aplicação web para automatizar a distribuição de medicamentos em Unidades Básicas de Saúde (UBSs).</p></a>
+    <a class="card" href="https://github.com/jhenyferssouza/Urna" target="_blank" rel="noopener"><div class="meta m"><span>Python</span><u>backend ↗</u></div><h3>Urna</h3><p>Projeto backend de uma urna eletrônica.</p></a>
+  </div>
+</section>
+
+<section id="trajetoria">
+  <h2><span class="m">// 02 · agora</span>Trajetória</h2>
+  <div class="job">
+    <div class="d m">ago/2026 → hoje<br>Campinas, SP</div>
+    <div>
+      <h3>Residente em Inteligência Artificial</h3>
+      <div class="m" style="color:var(--acc2);font-size:13px;margin-top:4px">Instituto de Pesquisas ELDORADO</div>
+      <ul>
+        <li>Pipelines e soluções de Machine Learning e NLP para classificação de dados e problemas reais.</li>
+        <li>Construção, limpeza e estruturação de datasets para treino e validação de modelos preditivos.</li>
+        <li>Backend em Python e integração de sistemas via APIs, com boas práticas de engenharia de software.</li>
+        <li>Metodologias ágeis: análise de requisitos, decisões de arquitetura e testes funcionais.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="m">// 03 · reconhecimentos</span>Conquistas</h2>
+  <div class="aw"><b>1º</b><div><strong>Melhor Projeto</strong><br><span>Samsung Innovation Campus</span></div></div>
+  <div class="aw"><b>4º</b><div><strong>Prova clínica</strong><br><span>Olimpíada Brasileira de Neurociências (OBN)</span></div></div>
+  <div class="aw"><b>★</b><div><strong>Moção</strong><br><span>Conquistas acadêmicas reconhecida pela cidade de paulínia </span></div></div>
+</section>
+
+<section>
+  <div class="two">
+    <div><h2><span class="m">// 04 · stack</span>Competências</h2>
+      <div class="chips"><span>Python</span><span>Django</span><span>FastAPI</span><span>SQL</span><span>REST APIs</span><span>Javascript</span><span>Node</span><span>Typescript</span><span>Express</span><span>LLMs</span><span>NLP</span><span>Machine Learning</span><span>Engenharia de projetos</span><span>Arquitetura de soluções</span></div></div>
+    <div class="edu"><h2><span class="m">// 05 · formação</span>Estudos</h2>
+      <p><strong>Engenharia de Software</strong><small>PUC-Campinas · 2026 – 2029</small></p>
+      <p><strong>Técnico em Tecnologia da Informação</strong><small>CEMEP · 2023 – 2025</small></p>
+      <p><strong>Inglês intermediário B2</strong><small>Certificado de proficiência</small></p></div>
+  </div>
+</section>
+
+<footer id="contato">
+  <h2>Tem interesse em saber mais? <span>entre em contato</span></h2>
+  <div class="btns" style="justify-content:center">
+    <a class="btn p" href="mailto:jhenyfersouza607090@gmail.com">jhenyfersouza607090@gmail.com</a>
+    <a class="btn" href="https://www.linkedin.com/in/jhenyfer-souza" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/jhenyferssouza" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <p class="m">© 2026 Jhenyfer Souza · Campinas e região</p>
+</footer>
+</div>
+</body>
+</html>
